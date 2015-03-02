@@ -20,7 +20,7 @@ export default class UserPage extends Page {
 				{user.name}
 				{user.description}
 			</div>
-		)
+		);
 	}
 
 	componentWillMount() {
