@@ -4,6 +4,8 @@ import User from './model/user';
 import Friendship from './model/friendship';
 import Tweet from './model/tweet';
 
+import Response from './response';
+
 const AUTH_SESSION_TIMEOUT = 300;
 
 var authenticationWindows = { };
@@ -142,6 +144,13 @@ export default class Twitter {
 				return twitter.api.getUserInfo(userId)
 					.then(twitter.updateUser.bind(twitter))
 					.catch(function(response) {
+						if (!(response instanceof Response)) {
+							throw response;
+						}
+
+						if (404 === response.status) {
+							return null;
+						}
 						// error codes @ https://dev.twitter.com/overview/api/response-codes
 						// if (403 === response.status) {
 							// .code == 63 -> user has beed suspended

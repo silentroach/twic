@@ -13,6 +13,12 @@ export default class UserPage extends Page {
 
 		var user = this.state.user;
 
+		if (!user) {
+			return (
+				<div>Not found</div>
+			);
+		}
+
 		return (
 			<div>
 				<Avatar template={user.avatar} type={Avatar.TYPE_BIG} />
