@@ -25,10 +25,15 @@ export default class UserPage extends Page {
 
 	componentWillMount() {
 		var page = this;
+		var msgParams = { };
 
-		var msg = new Message(Message.TYPE_USER, {
-			userId: this.props.params[0]
-		});
+		if ('@' === this.props.params[0][0]) {
+			msgParams.userScreenName = this.props.params[0];
+		} else {
+			msgParams.userId = this.props.params[0];
+		}
+
+		var msg = new Message(Message.TYPE_USER, msgParams);
 
 		msg
 			.send()
