@@ -140,7 +140,13 @@ export default class Twitter {
 				}
 
 				return twitter.api.getUserInfo(userId)
-					.then(twitter.updateUser.bind(twitter));
+					.then(twitter.updateUser.bind(twitter))
+					.catch(function(response) {
+						// error codes @ https://dev.twitter.com/overview/api/response-codes
+						// if (403 === response.status) {
+							// .code == 63 -> user has beed suspended
+						// }
+					});
 			});
 	}
 
