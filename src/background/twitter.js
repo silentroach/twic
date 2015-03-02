@@ -84,7 +84,7 @@ export default class Twitter {
 
 				user.parse(userJSON);
 
-				user
+				return user
 					.save(twitter.db)
 					.then(function() {
 						return user;
