@@ -1,11 +1,12 @@
 import React from 'react';
-import Page from '../../page';
 
 import Message from '../../../message';
 
 import Avatar from '../../components/avatar';
 
-export default class UserPage extends Page {
+import './index.styl';
+
+export default class UserPage extends React.Component {
 	render() {
 		if (!this.state || !this.state.user) {
 			return <div />;
@@ -19,12 +20,18 @@ export default class UserPage extends Page {
 			);
 		}
 
+		/* @todo resolve user url */
+
 		return (
-			<div>
+			<div id="profile" className="page">
 				<Avatar template={user.avatar} type={Avatar.TYPE_BIG} />
-				{user.screenName}
-				{user.name}
-				{user.description}
+
+				<ul id="info">
+					<li>{user.name ? user.name : ''} [{user.screenName}]</li>
+					{user.url ? <li><a href={user.url}>{user.url}</a></li> : ''}
+					{user.description ? <li id="info-description">{user.description}</li> : ''}
+					{user.location ? <li>{user.location}</li> : ''}
+				</ul>
 			</div>
 		);
 	}
