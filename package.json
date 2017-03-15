@@ -78,7 +78,7 @@
     "eslint-config-twic": "1.5.0",
     "eslint-plugin-react": "3.4.2",
     "gulp-eslint": "1.0.0",
-    "gulp-todo": "^3.3.0",
+    "gulp-todo": "3.3.0",
     "isparta-loader": "0.2.0",
     "karma": "0.13.10",
     "karma-chai": "0.1.0",
